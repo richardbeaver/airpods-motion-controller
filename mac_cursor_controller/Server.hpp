@@ -58,7 +58,7 @@ public:
   }
 
   void stop() {
-    if (running.exchange(false)) {
+    if (!running.exchange(false)) {
       return;
     }
     if (serverThread.joinable()) {
