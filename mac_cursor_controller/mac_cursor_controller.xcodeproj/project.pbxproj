@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		325B25F12EA3BFFE00E10CA5 /* AirPodsMouseMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 325B25EC2EA3BFFE00E10CA5 /* AirPodsMouseMac.mm */; };
+		325B25F22EA3BFFE00E10CA5 /* udp_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 325B25F02EA3BFFE00E10CA5 /* udp_server.cpp */; };
+		32842A632EA1C32600F74BA1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32842A622EA1C32600F74BA1 /* CoreGraphics.framework */; };
+		32842A652EA1C32F00F74BA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32842A642EA1C32F00F74BA1 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		32842A512EA1C0F400F74BA1 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -19,22 +26,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		325B25EC2EA3BFFE00E10CA5 /* AirPodsMouseMac.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AirPodsMouseMac.mm; sourceTree = "<group>"; };
+		325B25ED2EA3BFFE00E10CA5 /* MotionProcessor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MotionProcessor.hpp; sourceTree = "<group>"; };
+		325B25EE2EA3BFFE00E10CA5 /* MotionSmoother.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MotionSmoother.hpp; sourceTree = "<group>"; };
+		325B25EF2EA3BFFE00E10CA5 /* MouseController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MouseController.hpp; sourceTree = "<group>"; };
+		325B25F02EA3BFFE00E10CA5 /* udp_server.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = udp_server.cpp; sourceTree = "<group>"; };
 		32842A532EA1C0F400F74BA1 /* airpods_mouse */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = airpods_mouse; sourceTree = BUILT_PRODUCTS_DIR; };
+		32842A622EA1C32600F74BA1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		32842A642EA1C32F00F74BA1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		32842A552EA1C0F400F74BA1 /* airpods_mouse */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = airpods_mouse;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		32842A502EA1C0F400F74BA1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32842A652EA1C32F00F74BA1 /* Foundation.framework in Frameworks */,
+				32842A632EA1C32600F74BA1 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,8 +52,13 @@
 		32842A4A2EA1C0F400F74BA1 = {
 			isa = PBXGroup;
 			children = (
-				32842A552EA1C0F400F74BA1 /* airpods_mouse */,
+				32842A612EA1C32600F74BA1 /* Frameworks */,
 				32842A542EA1C0F400F74BA1 /* Products */,
+				325B25EC2EA3BFFE00E10CA5 /* AirPodsMouseMac.mm */,
+				325B25ED2EA3BFFE00E10CA5 /* MotionProcessor.hpp */,
+				325B25EE2EA3BFFE00E10CA5 /* MotionSmoother.hpp */,
+				325B25EF2EA3BFFE00E10CA5 /* MouseController.hpp */,
+				325B25F02EA3BFFE00E10CA5 /* udp_server.cpp */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +68,15 @@
 				32842A532EA1C0F400F74BA1 /* airpods_mouse */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		32842A612EA1C32600F74BA1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32842A642EA1C32F00F74BA1 /* Foundation.framework */,
+				32842A622EA1C32600F74BA1 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +93,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				32842A552EA1C0F400F74BA1 /* airpods_mouse */,
 			);
 			name = airpods_mouse;
 			packageProductDependencies = (
@@ -93,10 +112,11 @@
 				TargetAttributes = {
 					32842A522EA1C0F400F74BA1 = {
 						CreatedOnToolsVersion = 16.4;
+						LastSwiftMigration = 1640;
 					};
 				};
 			};
-			buildConfigurationList = 32842A4E2EA1C0F400F74BA1 /* Build configuration list for PBXProject "airpods_mouse" */;
+			buildConfigurationList = 32842A4E2EA1C0F400F74BA1 /* Build configuration list for PBXProject "mac_cursor_controller" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -120,6 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				325B25F12EA3BFFE00E10CA5 /* AirPodsMouseMac.mm in Sources */,
+				325B25F22EA3BFFE00E10CA5 /* udp_server.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +155,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -194,7 +216,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -244,23 +266,32 @@
 		32842A5B2EA1C0F400F74BA1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "airpods_mouse/airpods_mouse-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
 		32842A5C2EA1C0F400F74BA1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "airpods_mouse/airpods_mouse-Bridging-Header.h";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		32842A4E2EA1C0F400F74BA1 /* Build configuration list for PBXProject "airpods_mouse" */ = {
+		32842A4E2EA1C0F400F74BA1 /* Build configuration list for PBXProject "mac_cursor_controller" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32842A582EA1C0F400F74BA1 /* Debug */,
