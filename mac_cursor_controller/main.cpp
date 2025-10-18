@@ -3,20 +3,7 @@
 int main() {
   try {
     MotionControlApp app;
-    app.start();
-
-    std::cout
-        << "[Main] Press Enter to recalibrate, Ctrl+C or Ctrl+D to exit.\n";
-
-    std::string line;
-    while (std::getline(std::cin, line)) {
-      if (line.empty()) {
-        app.recalibrate();
-      }
-    }
-
-    app.stop();
-
+    app.runInteractive();
   } catch (const std::exception &e) {
     std::cerr << "Error: " << e.what() << "\n";
     return 1;

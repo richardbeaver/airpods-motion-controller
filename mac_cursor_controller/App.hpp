@@ -25,6 +25,22 @@ public:
 
   ~MotionControlApp() { stop(); }
 
+  void runInteractive() {
+    start();
+    std::cout
+        << "[Main] Press Enter to recalibrate, Ctrl+C or Ctrl+D to exit.\n";
+
+    std::string line;
+    while (std::getline(std::cin, line)) {
+      if (line.empty()) {
+        recalibrate();
+      }
+    }
+
+    stop();
+  }
+
+private:
   void start() {
     if (running.exchange(true)) {
       return;
@@ -33,7 +49,15 @@ public:
     std::cout << "[App] Motion control started.\n";
   }
 
-  void stop() { cleanUp(); }
+  void stop() {
+    if (!running.exchange(false)) {
+      return;
+    }
+    if (mainThread.joinable()) {
+      mainThread.join();
+    }
+    std::cout << "[App] Motion control stopped.\n";
+  }
 
   void recalibrate() {
     std::cout << "[App] Recalibrating...\n";
@@ -41,7 +65,6 @@ public:
     mouseController.moveToCenter();
   }
 
-private:
   void loop() {
     while (true) {
       // Drain all pending UDP packets
@@ -55,15 +78,5 @@ private:
 
       std::this_thread::sleep_for(std::chrono::milliseconds(5));
     }
-  }
-
-  void cleanUp() {
-    if (!running.exchange(false)) {
-      return;
-    }
-    if (mainThread.joinable()) {
-      mainThread.join();
-    }
-    std::cout << "[App] Motion control stopped.\n";
   }
 };
