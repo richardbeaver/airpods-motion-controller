@@ -78,6 +78,7 @@ private:
       auto [dx, dy] = processor.update(smoothPitch, smoothYaw);
       mouseController.moveRelative(dx, dy);
 
+      // Small sleep for pacing
       std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
   }

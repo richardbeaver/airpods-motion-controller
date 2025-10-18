@@ -1,6 +1,5 @@
 #include <arpa/inet.h>
 #include <atomic>
-#include <chrono>
 #include <cstring>
 #include <fcntl.h>
 #include <iostream>
@@ -36,10 +35,6 @@ public:
       return;
     }
 
-    // Set non-blocking mode
-    int flags = fcntl(sockfd, F_GETFL, 0);
-    fcntl(sockfd, F_SETFL, flags | O_NONBLOCK);
-
     std::cout << "[Server] Listening on UDP port " << port << "\n";
   }
 
@@ -61,9 +56,13 @@ public:
     if (!running.exchange(false)) {
       return;
     }
+
+    shutdown(sockfd, SHUT_RDWR);
     if (serverThread.joinable()) {
       serverThread.join();
     }
+
+    std::cout << "[Server] Stopped.\n";
   }
 
   std::tuple<double, double> getLatest() const {
@@ -81,18 +80,20 @@ private:
       ssize_t len = recvfrom(sockfd, buffer, sizeof(buffer) - 1, 0,
                              reinterpret_cast<sockaddr *>(&sender), &senderLen);
 
-      if (len > 0) {
-        buffer[len] = '\0';
-        std::istringstream iss(buffer);
-
-        double pitch, yaw;
-        if (iss >> pitch >> yaw) {
-          latestPitch.store(pitch);
-          latestYaw.store(yaw);
+      if (len < 0) {
+        if (running) {
+          perror("[Server] Failed in recvfrom call. Could not read packet.");
         }
-      } else {
-        // No data ready
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        break;
+      }
+
+      buffer[len] = '\0';
+      std::istringstream iss(buffer);
+
+      double pitch, yaw;
+      if (iss >> pitch >> yaw) {
+        latestPitch.store(pitch);
+        latestYaw.store(yaw);
       }
     }
 
