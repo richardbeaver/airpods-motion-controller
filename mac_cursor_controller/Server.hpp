@@ -4,7 +4,6 @@
 #include <fcntl.h>
 #include <iostream>
 #include <sstream>
-#include <string>
 #include <unistd.h>
 
 class Server {
@@ -45,15 +44,15 @@ public:
     }
   }
 
+  // Drain all available packets, leaving state set to latest pitch and yaw
   void pollLatest() {
     char buffer[526];
     sockaddr_in sender{};
     socklen_t senderLen = sizeof(sender);
 
-    // Drain all available packets, leaving state set to latest pitch and yaw
-    //
-    // TODO: determine if we can save intermediate pitch and yaw values to local
-    // variables, instead of writing to member data atomic values for each one
+    double newPitch{}, newYaw{};
+    bool newData = false;
+
     while (true) {
       ssize_t len = recvfrom(sockfd, buffer, sizeof(buffer) - 1, 0,
                              (struct sockaddr *)&sender, &senderLen);
@@ -62,17 +61,20 @@ public:
       }
 
       buffer[len] = '\0';
-      parsePacket(buffer);
+
+      std::istringstream iss(buffer);
+      double pitch, yaw;
+      if (iss >> pitch >> yaw) {
+        newPitch = pitch;
+        newYaw = yaw;
+        newData = true;
+      }
     }
-  }
 
-  void parsePacket(const std::string &msg) {
-    std::istringstream iss(msg);
-
-    double pitch, yaw;
-    if (iss >> pitch >> yaw) {
-      latestPitch = pitch;
-      latestYaw = yaw;
+    // Only write once — and only if new packets were parsed
+    if (newData) {
+      latestPitch.store(newPitch);
+      latestYaw.store(newYaw);
     }
   }
 
