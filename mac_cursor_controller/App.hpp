@@ -15,10 +15,7 @@ class MotionControlApp {
   MouseController mouseController;
 
   std::atomic_bool running{false};
-  std::thread mainThread;
-
-  double currentPitch = 0.0;
-  double currentYaw = 0.0;
+  std::thread appThread;
 
 public:
   explicit MotionControlApp(unsigned udpPort = 9999) : server(udpPort) {}
@@ -45,7 +42,10 @@ private:
     if (running.exchange(true)) {
       return;
     }
-    mainThread = std::thread(&MotionControlApp::loop, this);
+
+    server.start();
+    appThread = std::thread(&MotionControlApp::appLoop, this);
+
     std::cout << "[App] Motion control started.\n";
   }
 
@@ -53,30 +53,32 @@ private:
     if (!running.exchange(false)) {
       return;
     }
-    if (mainThread.joinable()) {
-      mainThread.join();
+
+    server.stop();
+    if (appThread.joinable()) {
+      appThread.join();
     }
+
     std::cout << "[App] Motion control stopped.\n";
   }
 
   void recalibrate() {
+    auto [pitch, yaw] = server.getLatest();
     std::cout << "[App] Recalibrating...\n";
-    processor.recalibrate(currentPitch, currentYaw);
+    processor.recalibrate(pitch, yaw);
     mouseController.moveToCenter();
+    std::cout << "[App] Recalibration complete.\n";
   }
 
-  void loop() {
-    while (true) {
-      // Drain all pending UDP packets
-      server.pollLatest();
-      // Get latest values
-      std::tie(currentPitch, currentYaw) = server.getLatest();
+  void appLoop() {
+    while (running) {
+      auto [pitch, yaw] = server.getLatest();
 
-      auto [smoothPitch, smoothYaw] = smoother.smooth(currentPitch, currentYaw);
+      auto [smoothPitch, smoothYaw] = smoother.smooth(pitch, yaw);
       auto [dx, dy] = processor.update(smoothPitch, smoothYaw);
       mouseController.moveRelative(dx, dy);
 
-      std::this_thread::sleep_for(std::chrono::milliseconds(5));
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
   }
 };

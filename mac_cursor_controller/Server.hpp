@@ -1,14 +1,19 @@
 #include <arpa/inet.h>
 #include <atomic>
+#include <chrono>
 #include <cstring>
 #include <fcntl.h>
 #include <iostream>
 #include <sstream>
+#include <thread>
 #include <unistd.h>
 
 class Server {
   unsigned PORT = 9999;
   int sockfd = -1;
+  std::atomic_bool running{false};
+  std::thread recvThread;
+
   std::atomic<double> latestPitch{0.0};
   std::atomic<double> latestYaw{0.0};
 
@@ -35,50 +40,62 @@ public:
     int flags = fcntl(sockfd, F_GETFL, 0);
     fcntl(sockfd, F_SETFL, flags | O_NONBLOCK);
 
-    std::cout << "AirPodsMouse Server running on port " << PORT << "...\n";
+    std::cout << "[Server] Listening on UDP port " << port << "\n";
   }
 
   ~Server() {
+    stop();
     if (sockfd >= 0) {
       close(sockfd);
     }
   }
 
-  // Drain all available packets, leaving state set to latest pitch and yaw
-  void pollLatest() {
-    char buffer[526];
-    sockaddr_in sender{};
-    socklen_t senderLen = sizeof(sender);
-
-    double newPitch{}, newYaw{};
-    bool newData = false;
-
-    while (true) {
-      ssize_t len = recvfrom(sockfd, buffer, sizeof(buffer) - 1, 0,
-                             reinterpret_cast<sockaddr *>(&sender), &senderLen);
-      if (len <= 0) {
-        break;
-      }
-
-      buffer[len] = '\0';
-
-      std::istringstream iss(buffer);
-      double pitch, yaw;
-      if (iss >> pitch >> yaw) {
-        newPitch = pitch;
-        newYaw = yaw;
-        newData = true;
-      }
+  void start() {
+    if (running.exchange(true)) {
+      return;
     }
+    recvThread = std::thread(&Server::receiveLoop, this);
+  }
 
-    // Only write once — and only if new packets were parsed
-    if (newData) {
-      latestPitch.store(newPitch);
-      latestYaw.store(newYaw);
+  void stop() {
+    if (running.exchange(false)) {
+      return;
+    }
+    if (recvThread.joinable()) {
+      recvThread.join();
     }
   }
 
   std::tuple<double, double> getLatest() const {
     return {latestPitch.load(), latestYaw.load()};
+  }
+
+private:
+  // Constantly update member pitch and yaw values from received packet data
+  void receiveLoop() {
+    char buffer[526];
+    sockaddr_in sender{};
+    socklen_t senderLen = sizeof(sender);
+
+    while (true) {
+      ssize_t len = recvfrom(sockfd, buffer, sizeof(buffer) - 1, 0,
+                             reinterpret_cast<sockaddr *>(&sender), &senderLen);
+
+      if (len > 0) {
+        buffer[len] = '\0';
+        std::istringstream iss(buffer);
+
+        double pitch, yaw;
+        if (iss >> pitch >> yaw) {
+          latestPitch.store(pitch);
+          latestYaw.store(yaw);
+        }
+      } else {
+        // No data ready
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+      }
+    }
+
+    std::cout << "[Server] Receiver thread stopped.\n";
   }
 };
