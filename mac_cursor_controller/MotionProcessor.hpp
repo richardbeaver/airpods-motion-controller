@@ -19,4 +19,9 @@ public:
 
     return {dx, dy};
   }
+
+  void recalibrate(double newPitch, double newYaw) {
+    lastPitch = newPitch;
+    lastYaw = newYaw;
+  }
 };

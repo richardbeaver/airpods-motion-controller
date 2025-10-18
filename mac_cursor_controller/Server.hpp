@@ -1,21 +1,22 @@
-#include "MotionProcessor.hpp"
-#include "MotionSmoother.hpp"
-#include "MouseController.hpp"
 #include <arpa/inet.h>
+#include <atomic>
+#include <cstring>
+#include <fcntl.h>
 #include <iostream>
-#include <sys/socket.h>
+#include <sstream>
+#include <string>
 #include <unistd.h>
 
-class AirPodsMouseServer {
+class Server {
   static inline unsigned PORT = 9999;
 
-  MotionSmoother smoother;
-  MotionProcessor processor;
-  MouseController mouse;
+  int sockfd = -1;
+  std::atomic<double> latestPitch{0.0};
+  std::atomic<double> latestYaw{0.0};
 
 public:
-  void start() {
-    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+  Server() {
+    sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {
       perror("socket");
       return;
@@ -31,33 +32,52 @@ public:
       close(sockfd);
       return;
     }
-    std::cout << "AirPodsMouseController running on port " << PORT << "..."
-              << '\n';
 
-    char buffer[256];
-    struct sockaddr_in sender{};
+    // Set non-blocking mode
+    int flags = fcntl(sockfd, F_GETFL, 0);
+    fcntl(sockfd, F_SETFL, flags | O_NONBLOCK);
+
+    std::cout << "AirPodsMouse Server running on port " << PORT << "...\n";
+  }
+
+  ~Server() {
+    if (sockfd >= 0) {
+      close(sockfd);
+    }
+  }
+
+  void pollLatest() {
+    char buffer[526];
+    sockaddr_in sender{};
     socklen_t senderLen = sizeof(sender);
 
+    // Drain all available packets, leaving state set to latest pitch and yaw
+    //
+    // TODO: determine if we can save intermediate pitch and yaw values to local
+    // variables, instead of writing to member data atomic values for each one
     while (true) {
-      ssize_t n = recvfrom(sockfd, buffer, sizeof(buffer) - 1, 0,
-                           (struct sockaddr *)&sender, &senderLen);
-      if (n < 0) {
-        perror("Could not receive in `recvfrom`");
+      ssize_t len = recvfrom(sockfd, buffer, sizeof(buffer) - 1, 0,
+                             (struct sockaddr *)&sender, &senderLen);
+      if (len <= 0) {
         break;
       }
-      if (n > 0) {
-        buffer[n] = '\0';
-        printf("Received: %s\n", buffer);
 
-        float pitch, yaw, roll;
-        if (sscanf(buffer, "%f %f %f", &pitch, &yaw, &roll) == 3) {
-          auto [smoothPitch, smoothYaw] = smoother.smooth(pitch, yaw);
-          auto [dx, dy] = processor.update(smoothPitch, smoothYaw);
-          mouse.moveCursor(dx, dy);
-        }
-      }
+      buffer[len] = '\0';
+      parsePacket(buffer);
     }
+  }
 
-    close(sockfd);
+  void parsePacket(const std::string &msg) {
+    std::istringstream iss(msg);
+
+    double pitch, yaw;
+    if (iss >> pitch >> yaw) {
+      latestPitch = pitch;
+      latestYaw = yaw;
+    }
+  }
+
+  std::tuple<double, double> getLatest() const {
+    return {latestPitch.load(), latestYaw.load()};
   }
 };
