@@ -25,7 +25,7 @@ public:
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
     addr.sin_port = htons(PORT);
 
-    if (bind(sockfd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
+    if (bind(sockfd, reinterpret_cast<sockaddr *>(&addr), sizeof(addr)) < 0) {
       perror("bind");
       close(sockfd);
       return;
@@ -55,7 +55,7 @@ public:
 
     while (true) {
       ssize_t len = recvfrom(sockfd, buffer, sizeof(buffer) - 1, 0,
-                             (struct sockaddr *)&sender, &senderLen);
+                             reinterpret_cast<sockaddr *>(&sender), &senderLen);
       if (len <= 0) {
         break;
       }
