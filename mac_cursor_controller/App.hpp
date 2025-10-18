@@ -4,7 +4,6 @@
 #include "MouseController.hpp"
 #include "Server.hpp"
 #include <atomic>
-#include <chrono>
 #include <iostream>
 #include <thread>
 
@@ -63,7 +62,7 @@ private:
   }
 
   void recalibrate() {
-    auto [pitch, yaw] = server.getLatest();
+    auto [pitch, yaw] = server.waitForLatest();
     std::cout << "[Main] Recalibrating...\n";
     processor.recalibrate(pitch, yaw);
     mouseController.moveToCenter();
@@ -72,14 +71,10 @@ private:
 
   void appLoop() {
     while (running) {
-      auto [pitch, yaw] = server.getLatest();
-
+      auto [pitch, yaw] = server.waitForLatest();
       auto [smoothPitch, smoothYaw] = smoother.smooth(pitch, yaw);
       auto [dx, dy] = processor.update(smoothPitch, smoothYaw);
       mouseController.moveRelative(dx, dy);
-
-      // Small sleep for pacing
-      std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
   }
 };

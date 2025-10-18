@@ -1,8 +1,10 @@
 #include <arpa/inet.h>
 #include <atomic>
+#include <condition_variable>
 #include <cstring>
 #include <fcntl.h>
 #include <iostream>
+#include <mutex>
 #include <sstream>
 #include <thread>
 #include <unistd.h>
@@ -15,6 +17,10 @@ class Server {
 
   std::atomic<double> latestPitch{0.0};
   std::atomic<double> latestYaw{0.0};
+
+  std::mutex mx;
+  std::condition_variable cv;
+  bool newData = false;
 
 public:
   explicit Server(unsigned port = 9999) : PORT(port) {
@@ -65,7 +71,11 @@ public:
     std::cout << "[Server] Stopped.\n";
   }
 
-  std::tuple<double, double> getLatest() const {
+  // Wait for access to read the latest pitch/yaw values
+  std::tuple<double, double> waitForLatest() {
+    std::unique_lock lock(mx);
+    cv.wait(lock, [&] { return newData || !running; });
+    newData = false;
     return {latestPitch.load(), latestYaw.load()};
   }
 
@@ -92,8 +102,14 @@ private:
 
       double pitch, yaw;
       if (iss >> pitch >> yaw) {
-        latestPitch.store(pitch);
-        latestYaw.store(yaw);
+        // Store new values, notify a waiting thread that there is new data
+        {
+          std::lock_guard lock(mx);
+          latestPitch.store(pitch);
+          latestYaw.store(yaw);
+          newData = true;
+        }
+        cv.notify_one();
       }
     }
 
