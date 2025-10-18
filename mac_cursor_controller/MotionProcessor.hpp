@@ -11,7 +11,7 @@ public:
 
   // Update motion data, return delta x/y for mouse movement
   std::tuple<double, double> update_pitch_yaw(double pitch, double yaw) {
-    auto dx = (yaw - lastYaw) * sensitivity;
+    auto dx = (yaw - lastYaw) * sensitivity * -1;
     auto dy = (pitch - lastPitch) * sensitivity;
 
     lastPitch = pitch;
