@@ -1,0 +1,559 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		324237892EA1DC330013CBE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 324237732EA1DC310013CBE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3242377A2EA1DC310013CBE3;
+			remoteInfo = iOSAirPodsStreamer;
+		};
+		324237932EA1DC340013CBE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 324237732EA1DC310013CBE3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3242377A2EA1DC310013CBE3;
+			remoteInfo = iOSAirPodsStreamer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3242377B2EA1DC310013CBE3 /* iOSAirPodsStreamer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAirPodsStreamer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		324237882EA1DC330013CBE3 /* iOSAirPodsStreamerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAirPodsStreamerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		324237922EA1DC340013CBE3 /* iOSAirPodsStreamerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAirPodsStreamerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3242377D2EA1DC310013CBE3 /* iOSAirPodsStreamer */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iOSAirPodsStreamer;
+			sourceTree = "<group>";
+		};
+		3242378B2EA1DC340013CBE3 /* iOSAirPodsStreamerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iOSAirPodsStreamerTests;
+			sourceTree = "<group>";
+		};
+		324237952EA1DC340013CBE3 /* iOSAirPodsStreamerUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = iOSAirPodsStreamerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		324237782EA1DC310013CBE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		324237852EA1DC330013CBE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3242378F2EA1DC340013CBE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		324237722EA1DC310013CBE3 = {
+			isa = PBXGroup;
+			children = (
+				3242377D2EA1DC310013CBE3 /* iOSAirPodsStreamer */,
+				3242378B2EA1DC340013CBE3 /* iOSAirPodsStreamerTests */,
+				324237952EA1DC340013CBE3 /* iOSAirPodsStreamerUITests */,
+				3242377C2EA1DC310013CBE3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3242377C2EA1DC310013CBE3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3242377B2EA1DC310013CBE3 /* iOSAirPodsStreamer.app */,
+				324237882EA1DC330013CBE3 /* iOSAirPodsStreamerTests.xctest */,
+				324237922EA1DC340013CBE3 /* iOSAirPodsStreamerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3242377A2EA1DC310013CBE3 /* iOSAirPodsStreamer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3242379C2EA1DC340013CBE3 /* Build configuration list for PBXNativeTarget "iOSAirPodsStreamer" */;
+			buildPhases = (
+				324237772EA1DC310013CBE3 /* Sources */,
+				324237782EA1DC310013CBE3 /* Frameworks */,
+				324237792EA1DC310013CBE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3242377D2EA1DC310013CBE3 /* iOSAirPodsStreamer */,
+			);
+			name = iOSAirPodsStreamer;
+			packageProductDependencies = (
+			);
+			productName = iOSAirPodsStreamer;
+			productReference = 3242377B2EA1DC310013CBE3 /* iOSAirPodsStreamer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		324237872EA1DC330013CBE3 /* iOSAirPodsStreamerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3242379F2EA1DC340013CBE3 /* Build configuration list for PBXNativeTarget "iOSAirPodsStreamerTests" */;
+			buildPhases = (
+				324237842EA1DC330013CBE3 /* Sources */,
+				324237852EA1DC330013CBE3 /* Frameworks */,
+				324237862EA1DC330013CBE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3242378A2EA1DC330013CBE3 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3242378B2EA1DC340013CBE3 /* iOSAirPodsStreamerTests */,
+			);
+			name = iOSAirPodsStreamerTests;
+			packageProductDependencies = (
+			);
+			productName = iOSAirPodsStreamerTests;
+			productReference = 324237882EA1DC330013CBE3 /* iOSAirPodsStreamerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		324237912EA1DC340013CBE3 /* iOSAirPodsStreamerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 324237A22EA1DC340013CBE3 /* Build configuration list for PBXNativeTarget "iOSAirPodsStreamerUITests" */;
+			buildPhases = (
+				3242378E2EA1DC340013CBE3 /* Sources */,
+				3242378F2EA1DC340013CBE3 /* Frameworks */,
+				324237902EA1DC340013CBE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				324237942EA1DC340013CBE3 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				324237952EA1DC340013CBE3 /* iOSAirPodsStreamerUITests */,
+			);
+			name = iOSAirPodsStreamerUITests;
+			packageProductDependencies = (
+			);
+			productName = iOSAirPodsStreamerUITests;
+			productReference = 324237922EA1DC340013CBE3 /* iOSAirPodsStreamerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		324237732EA1DC310013CBE3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					3242377A2EA1DC310013CBE3 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					324237872EA1DC330013CBE3 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 3242377A2EA1DC310013CBE3;
+					};
+					324237912EA1DC340013CBE3 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 3242377A2EA1DC310013CBE3;
+					};
+				};
+			};
+			buildConfigurationList = 324237762EA1DC310013CBE3 /* Build configuration list for PBXProject "iOSAirPodsStreamer" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 324237722EA1DC310013CBE3;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3242377C2EA1DC310013CBE3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3242377A2EA1DC310013CBE3 /* iOSAirPodsStreamer */,
+				324237872EA1DC330013CBE3 /* iOSAirPodsStreamerTests */,
+				324237912EA1DC340013CBE3 /* iOSAirPodsStreamerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		324237792EA1DC310013CBE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		324237862EA1DC330013CBE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		324237902EA1DC340013CBE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		324237772EA1DC310013CBE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		324237842EA1DC330013CBE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3242378E2EA1DC340013CBE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3242378A2EA1DC330013CBE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3242377A2EA1DC310013CBE3 /* iOSAirPodsStreamer */;
+			targetProxy = 324237892EA1DC330013CBE3 /* PBXContainerItemProxy */;
+		};
+		324237942EA1DC340013CBE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3242377A2EA1DC310013CBE3 /* iOSAirPodsStreamer */;
+			targetProxy = 324237932EA1DC340013CBE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3242379A2EA1DC340013CBE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3242379B2EA1DC340013CBE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3242379D2EA1DC340013CBE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PD8Y23P7A7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMotionUsageDescription = "This app uses motion data from your AirPods to move the Mac cursor.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.iOSAirPodsStreamer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3242379E2EA1DC340013CBE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PD8Y23P7A7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMotionUsageDescription = "This app uses motion data from your AirPods to move the Mac cursor.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.iOSAirPodsStreamer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		324237A02EA1DC340013CBE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.iOSAirPodsStreamerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSAirPodsStreamer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iOSAirPodsStreamer";
+			};
+			name = Debug;
+		};
+		324237A12EA1DC340013CBE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.iOSAirPodsStreamerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSAirPodsStreamer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iOSAirPodsStreamer";
+			};
+			name = Release;
+		};
+		324237A32EA1DC340013CBE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.iOSAirPodsStreamerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iOSAirPodsStreamer;
+			};
+			name = Debug;
+		};
+		324237A42EA1DC340013CBE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.iOSAirPodsStreamerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iOSAirPodsStreamer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		324237762EA1DC310013CBE3 /* Build configuration list for PBXProject "iOSAirPodsStreamer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3242379A2EA1DC340013CBE3 /* Debug */,
+				3242379B2EA1DC340013CBE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3242379C2EA1DC340013CBE3 /* Build configuration list for PBXNativeTarget "iOSAirPodsStreamer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3242379D2EA1DC340013CBE3 /* Debug */,
+				3242379E2EA1DC340013CBE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3242379F2EA1DC340013CBE3 /* Build configuration list for PBXNativeTarget "iOSAirPodsStreamerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				324237A02EA1DC340013CBE3 /* Debug */,
+				324237A12EA1DC340013CBE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		324237A22EA1DC340013CBE3 /* Build configuration list for PBXNativeTarget "iOSAirPodsStreamerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				324237A32EA1DC340013CBE3 /* Debug */,
+				324237A42EA1DC340013CBE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 324237732EA1DC310013CBE3 /* Project object */;
+}
