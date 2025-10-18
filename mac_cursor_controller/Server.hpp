@@ -1,4 +1,5 @@
 #include "MotionProcessor.hpp"
+#include "MotionSmoother.hpp"
 #include "MouseController.hpp"
 #include <arpa/inet.h>
 #include <iostream>
@@ -8,6 +9,7 @@
 class AirPodsMouseServer {
   static inline unsigned PORT = 9999;
 
+  MotionSmoother smoother;
   MotionProcessor processor;
   MouseController mouse;
 
@@ -49,7 +51,8 @@ public:
 
         float pitch, yaw, roll;
         if (sscanf(buffer, "%f %f %f", &pitch, &yaw, &roll) == 3) {
-          auto [dx, dy] = processor.update_pitch_yaw(pitch, yaw);
+          auto [smoothPitch, smoothYaw] = smoother.smooth(pitch, yaw);
+          auto [dx, dy] = processor.update(smoothPitch, smoothYaw);
           mouse.moveCursor(dx, dy);
         }
       }
