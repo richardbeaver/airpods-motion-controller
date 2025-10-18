@@ -12,7 +12,7 @@ class Server {
   unsigned PORT = 9999;
   int sockfd = -1;
   std::atomic_bool running{false};
-  std::thread recvThread;
+  std::thread serverThread;
 
   std::atomic<double> latestPitch{0.0};
   std::atomic<double> latestYaw{0.0};
@@ -54,15 +54,15 @@ public:
     if (running.exchange(true)) {
       return;
     }
-    recvThread = std::thread(&Server::receiveLoop, this);
+    serverThread = std::thread(&Server::receiveLoop, this);
   }
 
   void stop() {
     if (running.exchange(false)) {
       return;
     }
-    if (recvThread.joinable()) {
-      recvThread.join();
+    if (serverThread.joinable()) {
+      serverThread.join();
     }
   }
 

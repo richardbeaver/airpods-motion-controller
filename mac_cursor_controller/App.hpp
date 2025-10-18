@@ -64,10 +64,10 @@ private:
 
   void recalibrate() {
     auto [pitch, yaw] = server.getLatest();
-    std::cout << "[App] Recalibrating...\n";
+    std::cout << "[Main] Recalibrating...\n";
     processor.recalibrate(pitch, yaw);
     mouseController.moveToCenter();
-    std::cout << "[App] Recalibration complete.\n";
+    std::cout << "[Main] Recalibration complete.\n";
   }
 
   void appLoop() {
