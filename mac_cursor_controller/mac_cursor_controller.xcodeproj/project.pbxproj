@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		325B25F12EA3BFFE00E10CA5 /* AirPodsMouseMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = 325B25EC2EA3BFFE00E10CA5 /* AirPodsMouseMac.mm */; };
-		325B25F22EA3BFFE00E10CA5 /* udp_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 325B25F02EA3BFFE00E10CA5 /* udp_server.cpp */; };
+		325B26112EA3C33700E10CA5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 325B260F2EA3C33700E10CA5 /* main.cpp */; };
 		32842A632EA1C32600F74BA1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32842A622EA1C32600F74BA1 /* CoreGraphics.framework */; };
 		32842A652EA1C32F00F74BA1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32842A642EA1C32F00F74BA1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -26,11 +25,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		325B25EC2EA3BFFE00E10CA5 /* AirPodsMouseMac.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AirPodsMouseMac.mm; sourceTree = "<group>"; };
 		325B25ED2EA3BFFE00E10CA5 /* MotionProcessor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MotionProcessor.hpp; sourceTree = "<group>"; };
 		325B25EE2EA3BFFE00E10CA5 /* MotionSmoother.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MotionSmoother.hpp; sourceTree = "<group>"; };
 		325B25EF2EA3BFFE00E10CA5 /* MouseController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MouseController.hpp; sourceTree = "<group>"; };
-		325B25F02EA3BFFE00E10CA5 /* udp_server.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = udp_server.cpp; sourceTree = "<group>"; };
+		325B260F2EA3C33700E10CA5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		325B26102EA3C33700E10CA5 /* Server.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Server.hpp; sourceTree = "<group>"; };
 		32842A532EA1C0F400F74BA1 /* airpods_mouse */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = airpods_mouse; sourceTree = BUILT_PRODUCTS_DIR; };
 		32842A622EA1C32600F74BA1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32842A642EA1C32F00F74BA1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -54,11 +53,11 @@
 			children = (
 				32842A612EA1C32600F74BA1 /* Frameworks */,
 				32842A542EA1C0F400F74BA1 /* Products */,
-				325B25EC2EA3BFFE00E10CA5 /* AirPodsMouseMac.mm */,
 				325B25ED2EA3BFFE00E10CA5 /* MotionProcessor.hpp */,
 				325B25EE2EA3BFFE00E10CA5 /* MotionSmoother.hpp */,
 				325B25EF2EA3BFFE00E10CA5 /* MouseController.hpp */,
-				325B25F02EA3BFFE00E10CA5 /* udp_server.cpp */,
+				325B260F2EA3C33700E10CA5 /* main.cpp */,
+				325B26102EA3C33700E10CA5 /* Server.hpp */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,8 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				325B25F12EA3BFFE00E10CA5 /* AirPodsMouseMac.mm in Sources */,
-				325B25F22EA3BFFE00E10CA5 /* udp_server.cpp in Sources */,
+				325B26112EA3C33700E10CA5 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,7 +5,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-class AirPodsMouseController {
+class AirPodsMouseServer {
   static inline unsigned PORT = 9999;
 
   MotionProcessor processor;
@@ -58,13 +58,3 @@ public:
     close(sockfd);
   }
 };
-
-int main() {
-  try {
-    AirPodsMouseController controller;
-    controller.start();
-  } catch (const std::exception &e) {
-    std::cerr << "Error: " << e.what() << "\n";
-  }
-  return 0;
-}
