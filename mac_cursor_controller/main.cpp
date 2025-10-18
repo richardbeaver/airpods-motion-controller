@@ -5,10 +5,14 @@ int main() {
     MotionControlApp app;
     app.start();
 
-    // Keep alive until user quits
-    std::cout << "[Main] Press Ctrl+C or Ctrl+D to exit.\n";
+    std::cout
+        << "[Main] Press Enter to recalibrate, Ctrl+C or Ctrl+D to exit.\n";
+
     std::string line;
     while (std::getline(std::cin, line)) {
+      if (line.empty()) {
+        app.recalibrate();
+      }
     }
 
     app.stop();
