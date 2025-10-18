@@ -4,6 +4,7 @@
 #include "MouseController.hpp"
 #include "RecalibrationController.hpp"
 #include "Server.hpp"
+#include <atomic>
 #include <chrono>
 #include <iostream>
 #include <thread>
@@ -15,6 +16,9 @@ class MotionControlApp {
   MouseController mouseController;
   std::unique_ptr<RecalibrationController> recalibrator;
 
+  std::atomic_bool running{false};
+  std::thread mainThread;
+
   double currentPitch = 0.0;
   double currentYaw = 0.0;
 
@@ -23,16 +27,24 @@ public:
 
   ~MotionControlApp() { stop(); }
 
-  void run() {
-    // Launch recalibration controller
+  void start() {
+    if (running.exchange(true)) {
+      return;
+    }
+
+    // Launch recalibration controller in another thread
     recalibrator = std::make_unique<RecalibrationController>([&]() {
       processor.recalibrate(currentPitch, currentYaw);
       mouseController.moveToCenter();
     });
 
-    // Run main app loop
-    loop();
+    // Run main app loop in a second other thread
+    mainThread = std::thread(&MotionControlApp::loop, this);
+
+    std::cout << "[App] Motion control started.\n";
   }
+
+  void stop() { cleanUp(); }
 
 private:
   void loop() {
@@ -50,7 +62,13 @@ private:
     }
   }
 
-  void stop() {
+  void cleanUp() {
+    if (!running.exchange(false)) {
+      return;
+    }
+    if (mainThread.joinable()) {
+      mainThread.join();
+    }
     recalibrator.reset();
     std::cout << "[App] Motion control stopped.\n";
   }
