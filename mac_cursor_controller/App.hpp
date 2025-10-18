@@ -21,7 +21,7 @@ class MotionControlApp {
   double currentYaw = 0.0;
 
 public:
-  explicit MotionControlApp(int udpPort = 9999) : server(udpPort) {}
+  explicit MotionControlApp(unsigned udpPort = 9999) : server(udpPort) {}
 
   ~MotionControlApp() { stop(); }
 
