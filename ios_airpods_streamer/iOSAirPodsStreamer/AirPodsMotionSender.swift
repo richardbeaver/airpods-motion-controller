@@ -12,24 +12,6 @@ class AirPodsMotionSender: ObservableObject {
     
     func start() {
         print("Starting motion updates…")
-        print("Motion available:", motionManager.isDeviceMotionAvailable)
-        print("Motion active:", motionManager.isDeviceMotionActive)
-        
-        motionManager.startDeviceMotionUpdates(to: .main) { motion, error in
-            if let motion = motion {
-                let attitude = motion.attitude
-                let pitch = attitude.pitch
-                let yaw = attitude.yaw
-                let roll = attitude.roll
-                print("AirPods motion:", pitch, yaw, roll)
-                let message = "\(pitch) \(yaw) \(roll)"
-                self.send(message)
-            } else if let error = error {
-                print("Motion error:", error)
-            } else {
-                print("No motion data yet")
-            }
-        }
 
         // Setup UDP connection
         let nwHost = NWEndpoint.Host(host)
@@ -38,7 +20,10 @@ class AirPodsMotionSender: ObservableObject {
         connection?.start(queue: .global())
 
         motionManager.startDeviceMotionUpdates(to: .main) { [weak self] motion, error in
-            guard let motion = motion, let self = self else { return }
+            guard let self = self, let motion = motion else {
+                if let error = error { print("Motion error:", error) }
+                return
+            }
 
             let pitch = motion.attitude.pitch
             let yaw   = motion.attitude.yaw
