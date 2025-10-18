@@ -30,6 +30,7 @@
 		325B25EF2EA3BFFE00E10CA5 /* MouseController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MouseController.hpp; sourceTree = "<group>"; };
 		325B260F2EA3C33700E10CA5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		325B26102EA3C33700E10CA5 /* Server.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Server.hpp; sourceTree = "<group>"; };
+		325B263C2EA4086600E10CA5 /* App.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
 		32842A532EA1C0F400F74BA1 /* airpods_mouse */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = airpods_mouse; sourceTree = BUILT_PRODUCTS_DIR; };
 		32842A622EA1C32600F74BA1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32842A642EA1C32F00F74BA1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,6 +58,7 @@
 				325B25EE2EA3BFFE00E10CA5 /* MotionSmoother.hpp */,
 				325B25EF2EA3BFFE00E10CA5 /* MouseController.hpp */,
 				325B260F2EA3C33700E10CA5 /* main.cpp */,
+				325B263C2EA4086600E10CA5 /* App.hpp */,
 				325B26102EA3C33700E10CA5 /* Server.hpp */,
 			);
 			sourceTree = "<group>";
