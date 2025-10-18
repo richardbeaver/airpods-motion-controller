@@ -8,14 +8,13 @@
 #include <unistd.h>
 
 class Server {
-  static inline unsigned PORT = 9999;
-
+  unsigned PORT = 9999;
   int sockfd = -1;
   std::atomic<double> latestPitch{0.0};
   std::atomic<double> latestYaw{0.0};
 
 public:
-  Server() {
+  explicit Server(unsigned port = 9999) : PORT(port) {
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {
       perror("socket");
