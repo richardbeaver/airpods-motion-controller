@@ -10,7 +10,7 @@
 #include <unistd.h>
 
 class Server {
-  unsigned PORT = 9999;
+  unsigned PORT;
   int sockfd = -1;
   std::atomic_bool running{false};
   std::thread serverThread;
@@ -23,7 +23,7 @@ class Server {
   bool newData = false;
 
 public:
-  explicit Server(unsigned port = 9999) : PORT(port) {
+  explicit Server(unsigned port) : PORT(port) {
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (sockfd < 0) {
       perror("socket");

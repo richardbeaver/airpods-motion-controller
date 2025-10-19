@@ -9,6 +9,10 @@ import SwiftUI
 
 @main
 struct iOSAirPodsStreamerApp: App {
+    init() {
+        Env.load()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

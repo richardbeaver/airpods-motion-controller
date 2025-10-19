@@ -17,7 +17,7 @@ class MotionControlApp {
   std::thread appThread;
 
 public:
-  explicit MotionControlApp(unsigned udpPort = 9999) : server(udpPort) {}
+  explicit MotionControlApp(unsigned udpPort) : server(udpPort) {}
 
   ~MotionControlApp() { stop(); }
 

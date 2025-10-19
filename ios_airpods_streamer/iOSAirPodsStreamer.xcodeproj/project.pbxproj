@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		325B266F2EA4812300E10CA5 /* .env in Resources */ = {isa = PBXBuildFile; fileRef = 325B266E2EA4812300E10CA5 /* .env */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		324237892EA1DC330013CBE3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		3242377B2EA1DC310013CBE3 /* iOSAirPodsStreamer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAirPodsStreamer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		324237882EA1DC330013CBE3 /* iOSAirPodsStreamerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAirPodsStreamerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		324237922EA1DC340013CBE3 /* iOSAirPodsStreamerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSAirPodsStreamerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		325B266E2EA4812300E10CA5 /* .env */ = {isa = PBXFileReference; lastKnownFileType = text; name = .env; path = ../.env; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		324237722EA1DC310013CBE3 = {
 			isa = PBXGroup;
 			children = (
+				325B266E2EA4812300E10CA5 /* .env */,
 				3242377D2EA1DC310013CBE3 /* iOSAirPodsStreamer */,
 				3242378B2EA1DC340013CBE3 /* iOSAirPodsStreamerTests */,
 				324237952EA1DC340013CBE3 /* iOSAirPodsStreamerUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				325B266F2EA4812300E10CA5 /* .env in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

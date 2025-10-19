@@ -5,11 +5,11 @@ import Network
 class AirPodsMotionSender: ObservableObject {
     private let motionManager = CMHeadphoneMotionManager()
     private var connection: NWConnection?
-    private let host = "" // Replace with Mac’s local IP
-    private let port: UInt16 = 9999
+    private let host = Env.value(for: "MOTION_SERVER_HOST") ?? "(none)"
+    private let port = UInt16(Env.value(for: "MOTION_SERVER_PORT") ?? "9999") ?? 9999
 
     @Published var streaming = false
-    
+
     func start() {
         print("Starting motion updates…")
 
