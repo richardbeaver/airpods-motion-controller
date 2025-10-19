@@ -19,7 +19,11 @@ class AirPodsMotionSender: ObservableObject {
         connection = NWConnection(host: nwHost, port: nwPort, using: .udp)
         connection?.start(queue: .global())
 
-        motionManager.startDeviceMotionUpdates(to: .main) { [weak self] motion, error in
+        // Send motion updates from queue on background threads
+        let queue = OperationQueue()
+        queue.qualityOfService = .userInteractive // highest priority option
+
+        motionManager.startDeviceMotionUpdates(to: queue) { [weak self] motion, error in
             guard let self = self, let motion = motion else {
                 if let error = error { print("Motion error:", error) }
                 return
