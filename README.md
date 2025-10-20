@@ -101,3 +101,12 @@ MOTION_SERVER_PORT=9999
 
 - Keep your head facing forward at your desired neutral position and press Enter.
   - This resets the neutral orientation so that the cursor centers correctly.
+
+## Latency Measurements
+
+- Launch the macOS server with the `--timing` flag to enable latency output
+- When enabled, the server prints two latency metrics:
+  - Server latency — time from the iOS device’s motion measurement to when the
+    packet is parsed by the server running on the Mac.
+  - End-to-end latency — time from the iOS motion measurement to the completion
+    of cursor movement on macOS.

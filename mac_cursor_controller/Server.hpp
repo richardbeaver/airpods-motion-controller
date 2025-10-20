@@ -1,3 +1,4 @@
+#include "Time.hpp"
 #include <arpa/inet.h>
 #include <atomic>
 #include <condition_variable>
@@ -9,14 +10,16 @@
 #include <thread>
 #include <unistd.h>
 
+extern bool g_enableTiming;
+
 class Server {
   unsigned PORT;
   int sockfd = -1;
   std::atomic_bool running{false};
   std::thread serverThread;
 
-  std::atomic<double> latestPitch{0.0};
-  std::atomic<double> latestYaw{0.0};
+  std::atomic<double> latestPitch, latestYaw;
+  std::atomic<long long> latestClientTimestamp;
 
   std::mutex mx;
   std::condition_variable cv;
@@ -72,11 +75,11 @@ public:
   }
 
   // Wait for access to read the latest pitch/yaw values
-  std::tuple<double, double> waitForLatest() {
+  std::tuple<double, double, long long> waitForLatest() {
     std::unique_lock lock(mx);
     cv.wait(lock, [&] { return newData || !running; });
     newData = false;
-    return {latestPitch.load(), latestYaw.load()};
+    return {latestPitch.load(), latestYaw.load(), latestClientTimestamp.load()};
   }
 
 private:
@@ -101,12 +104,19 @@ private:
       std::istringstream iss(buffer);
 
       double pitch, yaw;
-      if (iss >> pitch >> yaw) {
+      long long clientTimestampMs;
+
+      if (iss >> pitch >> yaw >> clientTimestampMs) {
+        if (g_enableTiming) {
+          outputLatency(clientTimestampMs, "Server");
+        }
+
         // Store new values, notify a waiting thread that there is new data
         {
           std::lock_guard lock(mx);
           latestPitch.store(pitch);
           latestYaw.store(yaw);
+          latestClientTimestamp.store(clientTimestampMs);
           newData = true;
         }
         cv.notify_one();

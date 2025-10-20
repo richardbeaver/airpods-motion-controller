@@ -3,9 +3,12 @@
 #include "MotionSmoother.hpp"
 #include "MouseController.hpp"
 #include "Server.hpp"
+#include "Time.hpp"
 #include <atomic>
 #include <iostream>
 #include <thread>
+
+extern bool g_enableTiming;
 
 class MotionControlApp {
   Server server;
@@ -62,7 +65,7 @@ private:
   }
 
   void recalibrate() {
-    auto [pitch, yaw] = server.waitForLatest();
+    auto [pitch, yaw, _] = server.waitForLatest();
     std::cout << "[Main] Recalibrating...\n";
     processor.recalibrate(pitch, yaw);
     mouseController.moveToCenter();
@@ -71,10 +74,14 @@ private:
 
   void appLoop() {
     while (running) {
-      auto [pitch, yaw] = server.waitForLatest();
+      auto [pitch, yaw, clientTimestampMs] = server.waitForLatest();
       auto [smoothPitch, smoothYaw] = smoother.smooth(pitch, yaw);
       auto [dx, dy] = processor.update(smoothPitch, smoothYaw);
       mouseController.moveRelative(dx, dy);
+
+      if (g_enableTiming) {
+        outputLatency(clientTimestampMs, "End-to-end");
+      }
     }
   }
 };

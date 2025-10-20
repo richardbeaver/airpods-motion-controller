@@ -31,9 +31,9 @@ class AirPodsMotionSender: ObservableObject {
 
             let pitch = motion.attitude.pitch
             let yaw   = motion.attitude.yaw
-            let roll  = motion.attitude.roll
+            let timestampMs = Int64(Date().timeIntervalSince1970 * 1000)
 
-            let message = String(format: "%.3f %.3f %.3f", pitch, yaw, roll)
+            let message = String(format: "%.3f %.3f %lld", pitch, yaw, timestampMs)
             self.send(message)
         }
 
@@ -52,8 +52,6 @@ class AirPodsMotionSender: ObservableObject {
         connection?.send(content: data, completion: .contentProcessed { error in
             if let error = error {
                 print("Send error:", error)
-            } else {
-                print("Sent:", data)
             }
         })
     }

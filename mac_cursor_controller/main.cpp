@@ -1,12 +1,19 @@
 #include "App.hpp"
 #include "EnvLoader.hpp"
 
-int main() {
+bool g_enableTiming = false;
+
+int main(int argc, const char *argv[]) {
+  for (int i = 1; i < argc; ++i) {
+    if (strcmp(argv[i], "--timing") == 0) {
+      g_enableTiming = true;
+      std::cout << "[Main] Timing output enabled\n";
+    }
+  }
+
   EnvLoader::load(".env");
   auto portStr = EnvLoader::get("MOTION_SERVER_PORT", "9999");
   unsigned port = std::stoi(portStr);
-
-  std::cout << "[Server] Starting on port: " << port << "\n";
 
   try {
     MotionControlApp app(port);
